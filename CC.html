@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Card </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input, select {
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+
+        #submitBtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #submitBtn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Sales Form</h2>
+<form id="salesForm" onsubmit="return validateForm()">
+    <label for="cardType">Card Type:</label>
+    <select id="cardType" name="cardType">
+        <option value="visa">Visa</option>
+        <option value="mastercard">MasterCard</option>
+        <option value="amex">American Express</option>
+        <!-- Add more options as needed -->
+    </select>
+
+    <label for="cardNumber">Card Number:</label>
+    <input type="text" id="cardNumber" name="cardNumber" required>
+
+    <label for="cardName">Name on Card:</label>
+    <input type="text" id="cardName" name="cardName" required>
+
+    <label for="ccv">CCV Code:</label>
+    <input type="text" id="ccv" name="ccv" required>
+
+    <label for="expiryDate">Expiration Date:</label>
+    <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YYYY" required>
+
+    <button type="submit" id="submitBtn">Submit</button>
+</form>
+
+<script>
+    function validateForm() {
+        // Basic validation, you can enhance it as needed
+        var cardNumber = document.getElementById("cardNumber").value;
+        var ccv = document.getElementById("ccv").value;
+        var expiryDate = document.getElementById("expiryDate").value;
+
+        if (!/^\d{16}$/.test(cardNumber)) {
+            alert("Invalid Card Number");
+            return false;
+        }
+
+        if (!/^\d{3}$/.test(ccv)) {
+            alert("Invalid CCV Code");
+            return false;
+        }
+
+        // You might want to add more sophisticated validation for the expiry date
+
+        // If all validation passes, you can submit the form
+        alert("Form submitted successfully!");
+        return true;
+    }
+</script>
+
+</body>
+</html>
